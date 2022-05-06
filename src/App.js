@@ -1,14 +1,23 @@
 import React from 'react';
-import NavBar from './components/NavBar';
+// import axios from "axios";
+import { Container} from 'react-bootstrap';
 
+
+import NavBar from './components/NavBar';
 import './styles/App.css'
 
 function App() {
   return (
-    <div className='container-fluid app'>
+    <Container className='app'>
       <NavBar />
-      <p>HI</p>
-    </div>
+      <Container>
+      <h1>
+        Welcome, Bank Manager
+      </h1>
+      <p>f</p>
+      </Container>
+    
+    </Container>
   );
 }
 
