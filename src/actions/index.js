@@ -24,12 +24,9 @@ export const deposit = (_id, accountId, type, amount, name) => {
     };
   };
 
-export const retrieve_accounts = (accounts, transactions) => {
+export const retrieve_accounts = (accounts) => {
   return {
     type: "retrieve_accounts",
-    payload: {
-        accounts,
-        transactions
-    }
+    payload: accounts    
   };
 };

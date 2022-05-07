@@ -1,10 +1,9 @@
-const initialState = {
-accounts: [],
-  transactions: []
+let initialState = {
+  accounts: [],
+  transactions: [],
 };
 
 const reducer = (state = initialState, action) => {
-    
   switch (action.type) {
     case "withdraw":
       return {
@@ -29,12 +28,16 @@ const reducer = (state = initialState, action) => {
         }),
       };
     case "retrieve_accounts":
-        return {
-            accounts: action.accounts,
-            transactions: action.transactions
-        }
-    default:
+      state.accounts.push(action.payload);
       return state;
+    case "retrieve_transactions":
+      
+      return {
+        ...state,
+        transactions: action.transactions,
+      };
+    default:
+      return !state ? initialState : state;
   }
 };
 

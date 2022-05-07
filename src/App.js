@@ -4,6 +4,7 @@ import { Container} from 'react-bootstrap';
 
 
 import NavBar from './components/NavBar';
+import ListAccounts from './components/ListAccounts';
 import './styles/App.css'
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <h1>
         Welcome, Bank Manager
       </h1>
-      <p>f</p>
+      <ListAccounts />
       </Container>
     
     </Container>
