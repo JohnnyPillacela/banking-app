@@ -25,18 +25,15 @@ export const deposit = (_id, accountId, type, amount, name) => {
 };
 
 export const add_accounts = (accounts) => {
-  return (dispatch) => {
-    dispatch({
-      type: "add_accounts",
-      payload: accounts,
-    });
+  return {
+    type: "add_accounts",
+    payload: accounts,
   };
 };
 
 export const add_transactions = (transactions) => {
   return {
     type: "add_transactions",
-    payload: transactions
-  }
+    payload: transactions,
+  };
 };
-

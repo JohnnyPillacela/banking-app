@@ -2,7 +2,7 @@ let initialState = {
   accounts: [],
   transactions: [],
   accountsAdded: false,
-  transactionsAdded: false
+  transactionsAdded: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,11 +30,8 @@ const reducer = (state = initialState, action) => {
         }),
       };
     case "add_accounts":
-      if (!state.accountsAdded) {
-        state.accounts.push(...action.payload);
-        state.accountsAdded = true;
-      }
-      return state;
+      const newState = {...state};
+      return { ...state, accounts: [...action.payload], accountsAdded: true };
     case "add_transactions":
       if (!state.transactionsAdded) {
         state.accounts.push(...action.payload);
@@ -42,7 +39,7 @@ const reducer = (state = initialState, action) => {
       }
       return state;
     default:
-      return !state ? initialState : {...state};
+      return !state ? { ...initialState } : state ;
   }
 };
 

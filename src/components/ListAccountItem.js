@@ -1,16 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Card } from "react-bootstrap";
 
-function ListAccountItem(props) {
-    // const accounts = useSelector((state) => state.accounts);
-  return props.accounts.map((account) => {
-    return (
-      <li className="list-group-item" key={account._id}>
-        {account.name}
-      </li>
-    );
-  });
-}
+const ListAccountItem = (props) => {
+  console.log("Each Item");
+  console.log(props.account);
+  const account = props.account;
+  return (
+    <Card style={{ width: "18rem" }} key={account._id}>
+      <Card.Body>
+        <Card.Title>{account.name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
+          <b>Balance:</b> {account.balance}
+        </Card.Subtitle>
+      </Card.Body>
+    </Card>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -18,4 +24,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(ListAccountItem);
+export default connect(null, null)(ListAccountItem);
