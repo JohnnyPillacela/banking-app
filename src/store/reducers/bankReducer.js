@@ -1,6 +1,8 @@
 let initialState = {
   accounts: [],
   transactions: [],
+  accountsAdded: false,
+  transactionsAdded: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,17 +29,20 @@ const reducer = (state = initialState, action) => {
           name: action.name,
         }),
       };
-    case "retrieve_accounts":
-      state.accounts.push(action.payload);
+    case "add_accounts":
+      if (!state.accountsAdded) {
+        state.accounts.push(...action.payload);
+        state.accountsAdded = true;
+      }
       return state;
-    case "retrieve_transactions":
-      
-      return {
-        ...state,
-        transactions: action.transactions,
-      };
+    case "add_transactions":
+      if (!state.transactionsAdded) {
+        state.accounts.push(...action.payload);
+        state.transactionsAdded = true;
+      }
+      return state;
     default:
-      return !state ? initialState : state;
+      return !state ? initialState : {...state};
   }
 };
 
