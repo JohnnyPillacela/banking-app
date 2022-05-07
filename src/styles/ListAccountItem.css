@@ -1,0 +1,11 @@
+.account {
+    margin: 10px auto;
+    width: 45%;
+    border: 1px solid gray;
+    border-radius: 12px;
+}
+
+.card-title {
+    font-size: x-large;
+    color: blue;
+}

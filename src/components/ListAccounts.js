@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
 import { add_accounts, add_transactions } from "../actions";
-import { Card } from "react-bootstrap";
 
 import ListAccountItem from "./ListAccountItem";
+import "../styles/ListAccounts.css";
+import { Container } from "react-bootstrap";
 
 const accountsAPI =
   "https://my-json-server.typicode.com/bnissen24/project2DB/accounts";
@@ -12,16 +13,16 @@ const transactionsAPI =
   "https://my-json-server.typicode.com/bnissen24/project2DB/transactions";
 class ListAccounts extends React.Component {
   state = {
-    accounts: []
-  }
+    accounts: [],
+  };
   constructor(props) {
     super(props);
     this.getAccounts();
-  } 
+  }
   componentDidMount() {
-    this.setState({accounts: this.props.accounts});
-  }  
-  
+    this.setState({ accounts: this.props.accounts });
+  }
+
   async getAccounts() {
     try {
       console.log("Inside of getAccounts");
@@ -31,7 +32,7 @@ class ListAccounts extends React.Component {
       this.setState({});
     } catch (error) {
       throw error;
-    } 
+    }
   }
 
   async getTransactions() {
@@ -45,39 +46,26 @@ class ListAccounts extends React.Component {
     }
   }
 
-  renderList() {
-    console.log("Inside renderlist");
-    console.log(this.props);
-
-    const accountsList = this.props.accounts;
-    // const accountsList = this.state.accountsList;
-
-    return accountsList.map((account) => {
-      return (
-        <Card style={{ width: "18rem" }} key={account._id}>
-          <Card.Body>
-            <Card.Title>{account.name}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              <b>Balance:</b> {account.balance}
-            </Card.Subtitle>
-          </Card.Body>
-        </Card>
-      );
-    });
-  }
-
   render() {
     console.log("Inside Render");
     console.log(this.props);
     //let accountsList = this.renderList();
     return (
-      <div>
+      <div className="accounts">
         <h3>Accounts List</h3>
+        <hr />
+        <div className="accounts-list">
         {this.props.accounts.map((account) => {
-          return (<ListAccountItem account={account} key={account._id}/>);
+          return (
+            <ListAccountItem
+              account={account}
+              key={account._id}
+            />
+          );
         })}
-      </div> 
-    );  
+        </div>
+      </div>
+    );
   }
 }
 
@@ -93,8 +81,6 @@ const mapDispatchToProps = (dispatch) => {
     add_accounts: (accounts) => dispatch(add_accounts(accounts)),
     add_transactions: (transactions) =>
       dispatch(add_transactions(transactions)),
-  }; 
-
-}; 
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(ListAccounts);
- 

@@ -1,0 +1,11 @@
+.accounts {
+    border: 1px solid blue;
+    margin: 10px 0px;
+}
+
+.accounts-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* border: 1px solid black; */
+}
