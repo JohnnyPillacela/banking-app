@@ -1,69 +1,69 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { retrieve_accounts } from "../actions";
+import { add_accounts, add_transactions } from "../actions";
+
+import ListAccountItem from "./ListAccountItem";
+import "../styles/ListAccounts.css";
+import { Container } from "react-bootstrap";
 
 const accountsAPI =
   "https://my-json-server.typicode.com/bnissen24/project2DB/accounts";
 const transactionsAPI =
   "https://my-json-server.typicode.com/bnissen24/project2DB/transactions";
 class ListAccounts extends React.Component {
-  componentDidMount() {
+  state = {
+    accounts: [],
+  };
+  constructor(props) {
+    super(props);
     this.getAccounts();
+  }
+  componentDidMount() {
+    this.setState({ accounts: this.props.accounts });
   }
 
   async getAccounts() {
     try {
-      const response = await axios.get(accountsAPI);
-      const accountsData = response.data;
       console.log("Inside of getAccounts");
-      console.log(accountsData);
-      accountsData.forEach((account) => {
-        this.props.retrieve_accounts(account);
-      });
+      const response = await axios.get(accountsAPI);
+      console.log(this.props);
+      this.props.add_accounts(response.data);
+      this.setState({});
     } catch (error) {
       throw error;
     }
   }
-  
-  //  uses async await
-  getTransactions = () => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.get(transactionsAPI);
-        const data = response.data;
-        dispatch({
-          type: "retrieve_transactions",
-          payload: data,
-        });
-      } catch (error) {
-        throw error;
-      }
-    };
-  };
 
-  renderList() {
-    console.log("Inside renderlist");
-    console.log(this.props.accounts);
-
-    const accountsList = this.props.accounts;
-
-    return accountsList.map((account) => {
-      return (
-        <li className="list-group-item" key={account._id}>
-          {account.name}
-        </li>
-      );
-    });
+  async getTransactions() {
+    try {
+      console.log("Inside of getAccounts");
+      const response = await axios.get(transactionsAPI);
+      this.props.add_transactions(response.data);
+      // this.setState({});
+    } catch (error) {
+      throw error;
+    }
   }
 
   render() {
-    let accountsList = this.renderList();
-
+    // console.log("Inside Render");
+    // console.log(this.props);
+    //let accountsList = this.renderList();
     return (
-      <div className="card">
+      <div className="accounts">
         <h3>Accounts List</h3>
-        <ul className="list-group">{accountsList}</ul>
+        <hr />
+        <div className="accounts-list">
+        {this.props.accounts.map((account) => {
+          return (
+            <ListAccountItem
+              account={account}
+              key={account._id}
+            />
+          );
+        })}
+        </div>
       </div>
     );
   }
@@ -72,8 +72,15 @@ class ListAccounts extends React.Component {
 const mapStateToProps = (state) => {
   return {
     accounts: state.bank.accounts,
-    transactions: state.bank.transactions
+    transactions: state.bank.transactions,
   };
 };
 
-export default connect(mapStateToProps, { retrieve_accounts })(ListAccounts);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add_accounts: (accounts) => dispatch(add_accounts(accounts)),
+    add_transactions: (transactions) =>
+      dispatch(add_transactions(transactions)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ListAccounts);

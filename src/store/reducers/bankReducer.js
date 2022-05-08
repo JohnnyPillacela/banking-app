@@ -27,17 +27,12 @@ const reducer = (state = initialState, action) => {
           name: action.name,
         }),
       };
-    case "retrieve_accounts":
-      state.accounts.push(action.payload);
-      return state;
-    case "retrieve_transactions":
-      
-      return {
-        ...state,
-        transactions: action.transactions,
-      };
+    case "add_accounts":
+      return { ...state, accounts: [...action.payload] };
+    case "add_transactions":
+      return { ...state, transactions: [...action.payload] };
     default:
-      return !state ? initialState : state;
+      return !state ? { ...initialState } : state;
   }
 };
 

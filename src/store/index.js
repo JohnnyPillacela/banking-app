@@ -1,8 +1,9 @@
-import { combineReducers } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk"
+import reducers from "./reducers"
 
-import bankReducer from "./reducers/bankReducer";
-
-
-export default combineReducers({
-  bank: bankReducer
-});
+export const store = createStore(
+    reducers,
+    {},
+    applyMiddleware(thunk)
+)
