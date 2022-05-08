@@ -1,0 +1,47 @@
+.transaction {
+    margin: 10px auto;
+    width: 45%;
+    border: 1px solid gray;
+    border-radius: 12px;
+    /* display: flex; */
+    /* border: 1px solid red; */
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .card-title {
+    font-size: x-large;
+    color: blue;
+    display: flex;
+  }
+  
+  .border-0 {
+    padding: 5px !important;
+  }
+  
+  .card-body {
+    padding: 5px !important;
+  }
+  .card-text {
+    padding: 0px;
+  }
+
+  .amount {
+    margin: auto;
+    float: right;
+  }
+
+  .deposit {
+    background-color: rgb(94, 246, 94);
+  }
+
+  .withdraw {
+    background-color: rgb(250, 121, 121);
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .transaction {
+      width: 90%;
+    }
+  }
+  

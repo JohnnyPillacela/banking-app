@@ -1,0 +1,22 @@
+.app {
+  width: 960px;
+  margin: auto;
+  flex: 1 1 0;
+  /* border: 1px solid red; */
+}
+
+@media only screen and (max-width: 800px) {
+  .app {
+    min-width: 100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .app {
+    width: 600px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .app {
+    width: 400px;
+  }
+}
