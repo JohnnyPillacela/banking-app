@@ -25,6 +25,19 @@
   .card-text {
     padding: 0px;
   }
+
+  .amount {
+    margin: auto;
+    float: right;
+  }
+
+  .deposit {
+    background-color: rgb(94, 246, 94);
+  }
+
+  .withdraw {
+    background-color: rgb(250, 121, 121);
+  }
   
   @media only screen and (max-width: 500px) {
     .transaction {
