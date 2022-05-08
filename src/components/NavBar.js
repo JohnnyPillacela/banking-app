@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Nav, Container, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
 export default function NavBar() {
-  const [currentPage, setCurrentPage] = useState("/");
-  const isActiveTab = (tabName) => {
-    return tabName === currentPage ? "nav-link active" : "nav-link";
-  };
+  // const [currentPage, setCurrentPage] = useState("/");
+  // const isActiveTab = (tabName) => {
+  //   return tabName === currentPage ? "nav-link active" : "nav-link";
+  // };
 
-  const onTabClick = (event, tabName) => {
-    this.setState({ currentPage: tabName });
-  };
+  // const onTabClick = (event, tabName) => {
+  //   this.setState({ currentPage: tabName });
+  // };
   return (
     <Navbar bg="light" expand="lg">
       <Container>

@@ -14,7 +14,7 @@ function ListTransactions(props) {
       <h3>Your Customers Transactions</h3>
       <hr />
       <div className="accounts-list">
-        <table class="table table-striped table-hover table-bordered">
+        <table className="table table-striped table-hover table-bordered">
           <thead>
             <tr>
               <th scope="col">Name/ID</th>
