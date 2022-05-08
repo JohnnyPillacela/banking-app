@@ -23,8 +23,11 @@ export default function DepositWithdraw() {
           placeholder="Amount"
         />
       </div>
-      <button type="submit" class="btn btn-primary">
-        Submit
+      <button type="submit" class="btn btn-success">
+        Deposit
+      </button>
+      <button type="submit" class="btn btn-danger">
+        Withdraw
       </button>
     </form>
   );
