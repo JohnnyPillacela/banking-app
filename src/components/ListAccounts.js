@@ -18,6 +18,7 @@ class ListAccounts extends React.Component {
   constructor(props) {
     super(props);
     this.getAccounts();
+    this.getTransactions();
   }
   componentDidMount() {
     this.setState({ accounts: this.props.accounts });
@@ -27,7 +28,6 @@ class ListAccounts extends React.Component {
     try {
       console.log("Inside of getAccounts");
       const response = await axios.get(accountsAPI);
-      console.log(this.props);
       this.props.add_accounts(response.data);
       this.setState({});
     } catch (error) {
@@ -37,10 +37,9 @@ class ListAccounts extends React.Component {
 
   async getTransactions() {
     try {
-      console.log("Inside of getAccounts");
+      console.log("Inside of getTransactions");
       const response = await axios.get(transactionsAPI);
       this.props.add_transactions(response.data);
-      // this.setState({});
     } catch (error) {
       throw error;
     }
