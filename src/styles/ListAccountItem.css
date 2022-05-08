@@ -3,9 +3,25 @@
     width: 45%;
     border: 1px solid gray;
     border-radius: 12px;
+    /* display: flex; */
+    /* border: 1px solid red; */
+    align-items: center;
+    padding: 5px;
 }
 
 .card-title {
     font-size: x-large;
     color: blue;
+    display: flex;
+}
+
+.border-0 {
+    padding: 5px!important;
+}
+
+.card-body {
+    padding: 5px!important;
+}
+.card-text {
+    padding: 0px;
 }
