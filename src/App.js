@@ -3,12 +3,13 @@ import axios from "axios";
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import { add_accounts, add_transactions } from "./actions";
+import { connect } from "react-redux";
 
 import NavBar from "./components/NavBar";
 import ListAccounts from "./components/ListAccounts";
 import ListTransactions from "./components/ListTransactions";
+import UserAccount from "./components/UserAccount";
 import "./styles/App.css";
-import { connect } from "react-redux";
 
 const accountsAPI =
   "https://my-json-server.typicode.com/bnissen24/project2DB/accounts";
@@ -40,7 +41,7 @@ function App(props) {
   useEffect(() => {
     getAccounts();
     getTransactions();
-  }, [])
+  })
 
   return (
     <Container className="app">
@@ -54,6 +55,7 @@ function App(props) {
           <Route path="/" exact element={<ListAccounts />} />
           <Route path="/accounts" element={<ListAccounts />} />
           <Route path="/transactions" element={<ListTransactions />} />
+          <Route path="/account/:accountId" element={<UserAccount />} />
         </Routes>
       </BrowserRouter>
     </Container>
