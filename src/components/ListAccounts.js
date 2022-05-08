@@ -12,16 +12,10 @@ const accountsAPI =
 const transactionsAPI =
   "https://my-json-server.typicode.com/bnissen24/project2DB/transactions";
 class ListAccounts extends React.Component {
-  state = {
-    accounts: [],
-  };
   constructor(props) {
     super(props);
     this.getAccounts();
     this.getTransactions();
-  }
-  componentDidMount() {
-    this.setState({ accounts: this.props.accounts });
   }
 
   async getAccounts() {
