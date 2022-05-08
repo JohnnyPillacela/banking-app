@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "../styles/ListTransactionsItem.css";
 
 const ListTransactionsItem = (props) => {
-
   const transaction = props.transaction;
   const type = transaction.type;
   const color = type === "deposit" ? "deposit" : "withdraw";
@@ -15,7 +14,12 @@ const ListTransactionsItem = (props) => {
   return (
     <tr className="transaction" key={transaction._id}>
       <th>
-        <Link to={link}>{transaction.accountId}</Link>
+        <Link
+          to={link}
+          state={{ from: "/transactions", accountId: transaction.accountId }}
+        >
+          {transaction.accountId}
+        </Link>
       </th>
 
       <th>{transaction.name}</th>
