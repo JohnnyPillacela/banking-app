@@ -47,8 +47,8 @@ class ListAccounts extends React.Component {
   }
 
   render() {
-    console.log("Inside Render");
-    console.log(this.props);
+    // console.log("Inside Render");
+    // console.log(this.props);
     //let accountsList = this.renderList();
     return (
       <div className="accounts">

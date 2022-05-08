@@ -5,8 +5,8 @@ import { Card } from "react-bootstrap";
 import '../styles/ListAccountItem.css';
 
 const ListAccountItem = (props) => {
-  console.log("Each Item");
-  console.log(props.account);
+//   console.log("Each Item");
+//   console.log(props.account);
   const account = props.account;
   return (
     <Card className="account" key={account._id}>
