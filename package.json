@@ -1,6 +1,6 @@
 {
   "name": "banking-app",
-  "homepage": "https://johnnypillacela.github.io/banking-app",
+  "homepage": "https://johnnypillacela.github.io/banking-app/accounts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
