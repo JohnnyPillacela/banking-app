@@ -14,14 +14,25 @@ function ListTransactions(props) {
       <h3>Your Customers Transactions</h3>
       <hr />
       <div className="accounts-list">
-        {props.transactions.map((transaction) => {
-          return (
-            <ListTransactionsItem
-              transaction={transaction}
-              key={transaction._id}
-            />
-          );
-        })}
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Name/ID</th>
+              <th scope="col">Transaction Name</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.transactions.map((transaction) => {
+              return (
+                <ListTransactionsItem
+                  transaction={transaction}
+                  key={transaction._id}
+                />
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
