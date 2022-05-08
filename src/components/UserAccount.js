@@ -6,12 +6,15 @@ import ListAccountItem from "./ListAccountItem";
 import ListTransactionsItem from "./ListTransactionsItem";
 
 const UserAccount = (props) => {
+  
   console.log("Inside User Account");
   const location = useLocation();
   const { accountId } = location.state;
-
+  window.localStorage.setItem('accountID', JSON.stringify(accountId));
+  
   const accounts = props.accounts;
   const transactions = props.transactions;
+  console.log(accounts);
 
   const account = accounts.find((account) => account._id === accountId);
   const user_transactions = transactions.filter(

@@ -5,6 +5,7 @@ import ListAccountItem from "./ListAccountItem";
 import "../styles/ListAccounts.css";
 class ListAccounts extends React.Component {
   render() {
+    console.log("Inside ListAccounts Component");
     return (
       <div className="accounts">
         <h3>Accounts List</h3>
@@ -22,7 +23,7 @@ class ListAccounts extends React.Component {
       </div>
     );
   }
-}
+} 
 
 const mapStateToProps = (state) => {
   return {

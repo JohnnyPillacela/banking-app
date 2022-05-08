@@ -6,9 +6,7 @@ import "../styles/ListTransactions.css";
 
 function ListTransactions(props) {
   console.log("Inside Transaction Component");
-  console.log(props);
   const transactions = props.transactions;
-  console.log(transactions);
   return (
     <div className="transactions">
       <h3>Your Customers Transactions</h3>
