@@ -4,29 +4,29 @@ import { Connect } from "react-redux";
 export default function DepositWithdraw() {
   return (
     <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1"></label>
+      <div className="form-group">
+        <label htmlFor="exampleInputEmail1"></label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="Transaction Name"
         />
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1"></label>
+      <div className="form-group">
+        <label htmlFor="exampleInputPassword1"></label>
         <input
           type="number"
-          class="form-control"
+          className="form-control"
           id="exampleInputPassword1"
           placeholder="Amount"
         />
       </div>
-      <button type="submit" class="btn btn-success">
+      <button type="submit" className="btn btn-success">
         Deposit
       </button>
-      <button type="submit" class="btn btn-danger">
+      <button type="submit" className="btn btn-danger">
         Withdraw
       </button>
     </form>

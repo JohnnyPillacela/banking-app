@@ -20,9 +20,7 @@ const ListAccountItem = (props) => {
       </Card>
       <Card className="col-7 border-0">
         <Card.Body className="card-body">
-          <Card.Text className="card-text">
             <DepositWithdraw />
-          </Card.Text>
         </Card.Body>
       </Card>
     </div>
