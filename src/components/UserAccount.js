@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 
 import ListAccountItem from "./ListAccountItem";
 import ListTransactionsItem from "./ListTransactionsItem";
