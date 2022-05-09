@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 
@@ -7,36 +7,42 @@ import ListTransactionsItem from "./ListTransactionsItem";
 
 const UserAccount = (props) => {
   console.log("Inside User Account");
-  const accounts = useSelector((state) => state.bank.accounts);
-  const transactions = useSelector((state) => state.bank.transactions);
+
+  const accounts = props.accounts; // useSelector((state) => state.bank.accounts);
+  const transactions = props.transactions; // useSelector((state) => state.bank.transactions);
   // console.log(accounts);
   // console.log(transactions);
 
   const location = useLocation();
-  // let accountId = useParams().accountId; 
+  // let accountId = useParams().accountId;
   let accountId = 0;
   // console.log(location.pathname.split("/"));
   if (!location.state) {
     accountId = location.pathname.split("/")[2];
   } else {
-    accountId = location.state.accountId; 
+    accountId = location.state.accountId;
   }
   console.log(accountId);
-  // if (!accountId) {
-  //   // return;
-  //   return <div>Loading...</div>;
-  // }
-  // console.log(accountId);
+  if (!transactions) {
+    return <div>Loading...</div>;
+  }
+  console.log(transactions);
 
   const account = accounts.find((account) => account._id === accountId);
-  const user_transactions = transactions.filter(
-    (transaction) => transaction.accountId === accountId
-  );
+  const user_transactions = transactions.filter((transaction) => transaction.accountId === accountId);
 
-  // useEffect(() => {}, [accounts]);
+  // useEffect(() => {}, [transactions]);
 
   if (!account) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <h1>Loading...</h1>
+        <h5>
+          You tried accessing the link directly, dont do that. Please travel
+          there
+        </h5>
+      </div>
+    );
   }
 
   return (
