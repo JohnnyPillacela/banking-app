@@ -1,3 +1,9 @@
+# Johnny Pillacela
+## Spring 2022 IS 322 Final Project
+## Deployed on Heroku: [https://jjp99-react-redux-bank.herokuapp.com/accounts](https://jjp99-react-redux-bank.herokuapp.com/accounts)
+
+<br>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
