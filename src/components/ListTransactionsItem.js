@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import "../styles/ListTransactionsItem.css";
 
@@ -11,14 +12,17 @@ const ListTransactionsItem = (props) => {
     type === "withdraw" ? `-$${transaction.amount}` : `$${transaction.amount}`;
   const link = `/account/${transaction.accountId}`;
 
+  const accounts = useSelector((state) => state.bank.accounts);
+  const account = accounts.find((account) => account._id === transaction.accountId);
+
   return (
     <tr className="transaction" key={transaction._id}>
       <th>
         <Link
           to={link}
-          state={{ from: "/transactions", accountId: transaction.accountId }}
+          state={{ accountId: transaction.accountId }}
         >
-          {transaction.accountId}
+          {account.name} / {transaction.accountId}
         </Link>
       </th>
 

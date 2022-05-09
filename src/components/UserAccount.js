@@ -1,54 +1,55 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { connect } from "react-redux";
+import { useLocation, useParams } from "react-router-dom";
+import { connect, useSelector } from "react-redux";
 
 import ListAccountItem from "./ListAccountItem";
 import ListTransactionsItem from "./ListTransactionsItem";
 
 const UserAccount = (props) => {
-  
   console.log("Inside User Account");
+  const accounts = useSelector((state) => state.bank.accounts);
+  const transactions = useSelector((state) => state.bank.transactions);
+  // console.log(accounts);
+  // console.log(transactions);
+
   const location = useLocation();
   const { accountId } = location.state;
-  window.localStorage.setItem('accountID', JSON.stringify(accountId));
-  
-  const accounts = props.accounts;
-  const transactions = props.transactions;
-  console.log(accounts);
+  // const accountId = useParams().accountId; 
+  console.log(accountId); 
+  // console.log(accountId);
 
   const account = accounts.find((account) => account._id === accountId);
   const user_transactions = transactions.filter(
     (transaction) => transaction.accountId === accountId
   );
 
-  console.log(user_transactions);
-
-  console.log(account);
+  if (!account) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      UserAccount
+      <h3>User Account for {account.name}</h3>
       <ListAccountItem account={account} key={account._id} />
       <table className="table table-striped table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">Name/ID</th>
+            <th scope="col">Name / ID</th>
             <th scope="col">Transaction Name</th>
             <th scope="col">Type</th>
           </tr>
         </thead>
         <tbody>
-            {user_transactions.map((transaction) => {
-              return (
-                <ListTransactionsItem
-                  transaction={transaction}
-                  key={transaction._id}
-                />
-              );
-            })}
-          </tbody>
+          {user_transactions.map((transaction) => {
+            return (
+              <ListTransactionsItem
+                transaction={transaction}
+                key={transaction._id}
+              />
+            );
+          })}
+        </tbody>
       </table>
-      {accountId}
     </div>
   );
 };
@@ -60,4 +61,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(UserAccount);
+export default connect(mapStateToProps)(UserAccount);

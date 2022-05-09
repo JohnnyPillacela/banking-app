@@ -21,7 +21,7 @@ class App extends React.Component {
     console.log("Inside APP");
     super(props);
     this.getAccounts();
-    this.getTransactions();
+    this.getTransactions(); 
   }
 
   async getAccounts() {
@@ -51,7 +51,6 @@ class App extends React.Component {
           <NavBar />
           <Container>
             <h1>Welcome, Bank Manager</h1>
-            {/* <ListAccounts /> */}
           </Container>
           <Routes>
             <Route path="/" exact element={<ListAccounts />} />
