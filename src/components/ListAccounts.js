@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import ListAccountItem from "./ListAccountItem";
 import "../styles/ListAccounts.css";
 class ListAccounts extends React.Component {
+  accounts = this.props.accounts;
   render() {
     console.log("Inside ListAccounts Component");
     return (
