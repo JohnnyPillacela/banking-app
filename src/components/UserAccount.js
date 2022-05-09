@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 
 import ListAccountItem from "./ListAccountItem";
@@ -13,9 +13,19 @@ const UserAccount = (props) => {
   // console.log(transactions);
 
   const location = useLocation();
-  const { accountId } = location.state;
-  // const accountId = useParams().accountId; 
-  console.log(accountId); 
+  // let accountId = useParams().accountId; 
+  let accountId = 0;
+  // console.log(location.pathname.split("/"));
+  if (!location.state) {
+    accountId = location.pathname.split("/")[2];
+  } else {
+    accountId = location.state.accountId; 
+  }
+  console.log(accountId);
+  // if (!accountId) {
+  //   // return;
+  //   return <div>Loading...</div>;
+  // }
   // console.log(accountId);
 
   const account = accounts.find((account) => account._id === accountId);

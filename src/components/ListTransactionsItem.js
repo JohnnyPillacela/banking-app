@@ -13,15 +13,23 @@ const ListTransactionsItem = (props) => {
   const link = `/account/${transaction.accountId}`;
 
   const accounts = useSelector((state) => state.bank.accounts);
-  const account = accounts.find((account) => account._id === transaction.accountId);
+  const account = accounts.find(
+    (account) => account._id === transaction.accountId
+  );
 
+  if (!account) {
+    return (
+      <tr>
+        <th>Loading...</th>
+        <th>Loading...</th>
+        <th>Loading...</th>
+      </tr>
+    );
+  }
   return (
     <tr className="transaction" key={transaction._id}>
       <th>
-        <Link
-          to={link}
-          state={{ accountId: transaction.accountId }}
-        >
+        <Link to={link} state={{ accountId: transaction.accountId }}>
           {account.name} / {transaction.accountId}
         </Link>
       </th>
