@@ -1,4 +1,4 @@
-export const wdithdraw = (_id, accountId, type, amount, name) => {
+export const withdraw = (_id, accountId, type, amount, name) => {
   return {
     type: "withdraw",
     payload: {
@@ -7,7 +7,7 @@ export const wdithdraw = (_id, accountId, type, amount, name) => {
       type,
       amount,
       name,
-    },
+    }
   };
 };
 
@@ -20,7 +20,7 @@ export const deposit = (_id, accountId, type, amount, name) => {
       type,
       amount,
       name,
-    },
+    }
   };
 };
 

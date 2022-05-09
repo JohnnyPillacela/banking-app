@@ -1,20 +1,47 @@
-import React, { useSelector } from "react";
-// import { Connect } from "react-redux";
+import React, { useState} from "react";
+import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { deposit, withdraw } from "../actions";
 
-export default function DepositWithdraw() { 
-  // const deposit = useSelector((state) => state.bank.deposit);
-  // const withdraw = useSelector((state) => state.bank.withdraw);
-
+function DepositWithdraw(props) { 
+  console.log("Inside Deposit/Withdraw");
+  const transactions = useSelector((state) => state.bank.transactions);
   // console.log(deposit);
   // console.log(withdraw);
+  // console.log(transactions);
+  const id_num = transactions.length + 1;
+  const account_id = props.account._id;
 
-  // const onFormSubmit = (event) => {
-  //   event.preventDefault();
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState();
 
-  //   this.props.addPlayer(this.state.name, this.state.initiative, this.props.characterType);
+  const onDeposit = (event) => {
+    event.preventDefault();
 
-  //   this.setState({ name: '', initiative: '' });
-  // }
+    console.log(id_num)
+    console.log(account_id)
+    console.log(amount)
+    console.log(name)
+    console.log("deposit submitted");
+    props.deposit(id_num, account_id, "deposit", amount, name);
+
+    setName("");
+    setAmount("");
+  }
+
+  const onWithdraw = (event) => {
+    event.preventDefault();
+
+    console.log(id_num)
+    console.log(account_id)
+    console.log(amount)
+    console.log(name)
+    console.log("withdraw submitted");
+    props.withdraw(id_num, account_id, "withdraw", amount, name);
+
+    setName("");
+    setAmount("");
+  }
 
   return (
     <form>
@@ -25,6 +52,8 @@ export default function DepositWithdraw() {
           className="form-control"
           id="name"
           placeholder="Transaction Name"
+          value={name}
+          onChange={event => setName(event.target.value)}
         />
       </div>
       <div className="form-group">
@@ -34,14 +63,26 @@ export default function DepositWithdraw() {
           className="form-control"
           id="amount"
           placeholder="Amount"
+          value={amount}
+          onChange={event => setAmount(event.target.value)}
         />
       </div>
-      <button type="submit" className="btn btn-success">
+      <button type="submit" className="btn btn-success" onClick={onDeposit}>
         Deposit
       </button>
-      <button type="submit" className="btn btn-danger">
+      <button type="submit" className="btn btn-danger" onClick={onWithdraw}>
         Withdraw
       </button>
     </form>
   );
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deposit: (_id, accountId, type, amount, name) => dispatch(deposit(_id, accountId, type, amount, name)),
+    withdraw: (_id, accountId, type, amount, name) =>
+      dispatch(withdraw(_id, accountId, type, amount, name)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(DepositWithdraw);

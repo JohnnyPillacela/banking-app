@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useLocation } from "react-router-dom";
 import { connect, useSelector } from "react-redux";
 
@@ -32,6 +32,8 @@ const UserAccount = (props) => {
   const user_transactions = transactions.filter(
     (transaction) => transaction.accountId === accountId
   );
+
+  // useEffect(() => {}, [accounts]);
 
   if (!account) {
     return <div>Loading...</div>;
